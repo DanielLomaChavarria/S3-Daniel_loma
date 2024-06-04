@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="login-card">
+    <ion-img src="assets/images/logo.png"></ion-img>
+    <br>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <ion-button expand="block" type="submit" [disabled]="!loginForm.valid">Sign Up</ion-button>
+    </form>
+    <div class="sign-up-link">
+      <a routerLink="/login">Restablecer contraseña</a>
+    </div>
+    <div class="or-divider">Or</div>
+    <div class="social-buttons">
+      <ion-button color="primary" expand="block">Iniciar Facebook</ion-button>
+      <ion-button color="danger" expand="block">Iniciar Google</ion-button>
+    </div>
+  </ion-card>
+</ion-content>
