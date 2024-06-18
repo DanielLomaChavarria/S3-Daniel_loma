@@ -1,0 +1,10 @@
+{
+  "platos": [
+    { "id": 1, "title": "Cazuela de Vacuno", "price": 10000, "image": "assets/images/cazuela-vacuno.jpg" },
+    { "id": 2, "title": "Caldillo de Congrio", "price": 12000, "image": "assets/images/caldillo-congrio.jpeg" },
+    { "id": 3, "title": "Curanto", "price": 15000, "image": "assets/images/curanto.jpeg" },
+    { "id": 4, "title": "Pastel de Choclo", "price": 8000, "image": "assets/images/pastel-choclo.jpg" },
+    { "id": 5, "title": "Empanada de Pino", "price": 3000, "image": "assets/images/empanada.jpg" },
+    { "id": 6, "title": "Ceviche", "price": 9000, "image": "assets/images/ceviche.jpeg" }
+  ]
+}
