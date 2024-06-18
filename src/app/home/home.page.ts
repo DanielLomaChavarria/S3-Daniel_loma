@@ -1,6 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { ApiService } from '../services/api.service';
+import { Observable, of } from 'rxjs';
+import { Plato } from '../models/plato.model'; // Asegúrate de tener este modelo definido
+import { CartService } from '../services/cart.service'; // Importar CartService
 
 @Component({
   selector: 'app-home',
@@ -29,15 +33,25 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
     ])
   ]
 })
-export class HomePage {
-  cazuelaTitle = 'Cazuela de Vacuno';
-  caldilloTitle = 'Caldillo de Congrio';
-  curantoTitle = 'Curanto';
-  pastelTitle = 'Pastel de Choclo';
-  empanadaTitle = 'Empanada de Pino';
-  cevicheTitle = 'Ceviche';
+export class HomePage implements OnInit {
+  platos$: Observable<Plato[]> = of([]); // Inicialización de la propiedad
 
-  constructor(private alertController: AlertController) {}
+  constructor(
+    private apiService: ApiService,
+    private alertController: AlertController,
+    private cartService: CartService // Inyectar CartService
+  ) {}
+
+  ngOnInit() {
+    this.platos$ = this.apiService.getPlatos();
+    this.platos$.subscribe(data => {
+      console.log(data); // Verifica los datos en la consola
+    });
+  }
+
+  addToCart(plato: Plato) {
+    this.cartService.addToCart(plato);
+  }
 
   async presentAlert() {
     const alert = await this.alertController.create({

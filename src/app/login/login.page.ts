@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { AuthService } from '../guards/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,25 +7,18 @@ import { Router } from '@angular/router';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
-  loginForm: FormGroup;
+export class LoginPage {
+  username: string = '';  // Agregar valor inicial
+  password: string = '';  // Agregar valor inicial
 
-  constructor(private fb: FormBuilder, private router: Router) {
-    this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-    });
-  }
+  constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit() {}
-
-  onSubmit() {
-    if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
-      // Navegar a la página principal
+  login() {
+    if (this.authService.login(this.username, this.password)) {
       this.router.navigate(['/home']);
     } else {
-      console.log('Form is not valid');
+      // Mostrar mensaje de error
+      console.log('Login failed');
     }
   }
 }

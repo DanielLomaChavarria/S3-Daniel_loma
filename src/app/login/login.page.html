@@ -1,10 +1,32 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Login</ion-title>
+    <ion-title>INICIAR SESIÒN</ion-title>
   </ion-toolbar>
 </ion-header>
-
+<ion-img src="assets/images/logo.png"></ion-img>
 <ion-content>
+  <form (ngSubmit)="login()">
+    <ion-item>
+      <ion-label position="floating">Username</ion-label>
+      <ion-input [(ngModel)]="username" name="username" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input [(ngModel)]="password" name="password" type="password" required></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" type="submit">Login</ion-button>
+  </form>
+  <div class="or-divider">O CON </div>
+    <div class="social-buttons">
+      <ion-button color="primary" expand="block">Iniciar Facebook</ion-button>
+      <ion-button color="danger" expand="block">Iniciar Google</ion-button>
+    </div>
+</ion-content>
+
+
+<!-- <ion-content>
   <ion-card class="login-card">
     <ion-img src="assets/images/logo.png"></ion-img>
     <br>
@@ -28,4 +50,4 @@
       <ion-button color="danger" expand="block">Iniciar Google</ion-button>
     </div>
   </ion-card>
-</ion-content>
+</ion-content> --> -->
