@@ -1,3 +1,4 @@
+
 {
   "platos": [
     { "id": 1, "title": "Cazuela de Vacuno", "price": 10000, "image": "assets/images/cazuela-vacuno.jpg" },
